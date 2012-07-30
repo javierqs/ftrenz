@@ -1,4 +1,14 @@
 Ftrenz::Application.routes.draw do
+  resources :displays
+
+  resources :measures
+
+  resources :sizes
+
+  resources :molds
+
+  resources :categories
+
   resources :products
 
   # The priority is based upon order of creation:

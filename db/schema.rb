@@ -11,11 +11,55 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120713042251) do
+ActiveRecord::Schema.define(:version => 20120722190211) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "displays", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "measures", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "molds", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "product_colors", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "color_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "product_colors", ["color_id"], :name => "index_product_colors_on_color_id"
+  add_index "product_colors", ["product_id"], :name => "index_product_colors_on_product_id"
 
   create_table "products", :force => true do |t|
     t.string   "name"
     t.integer  "size_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "display_id"
+    t.integer  "category_id"
+    t.integer  "mold_id"
+    t.integer  "measure_id"
+  end
+
+  create_table "sizes", :force => true do |t|
+    t.integer  "unit"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
